@@ -14,7 +14,7 @@ function Menu() {
         {id:3,title:'Working Hours',url:'/'},
         {id:4,title:'Contact',url:'/'},
 
-    ];
+    ]; 
 
     const user=true;
 
@@ -22,9 +22,16 @@ function Menu() {
 
   return (
     <div>
-        {!open? <Image src='/open.png' width={20} height={20} alt="openimg" onClick={()=>{setOpen(true)}}/>:
-        <Image src='/close.png' width={20} height={20} alt="openimg" onClick={()=>{setOpen(false)}}/>}
-        {open && <div className='bg-red-500 text-white absolute left-0 top-24 h-[calc(100vh-6rem)]  flex items-center justify-center flex-col w-full text-3xl gap-8'>
+        <Image
+        src={open ? "/close.png" : "/open.png"}
+        alt=""
+        width={20}
+        height={20}
+        onClick={() => setOpen(!open)}
+        className="cursor-pointer"
+      />
+        {open && <div className="bg-red-500 text-white absolute left-0 top-24 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-3xl z-10">
+
             {links.map((item)=>
             (
                 <Link href={item.url} key={item.id} onClick={()=>{setOpen(false)}}>{item.title}</Link>
